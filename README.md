@@ -272,18 +272,18 @@ echo "hello from stdin" | dart run lib/tutorials/03_dcat.dart
 
 > 来源：[Dart 教程 - 编写 HTTP 服务器](https://dart.ac.cn/tutorials/server/httpserver)
 
-使用 `shelf` + `shelf_router` 包搭建 HTTP 服务，演示路由处理、日志中间件、请求响应。
+使用 `dart:io` 的 `HttpServer` 搭建 HTTP 服务，演示路由分发、请求解析、响应构造。
 
 ### 功能介绍
 
 | 知识点 | 说明 |
 |--------|------|
-| `shelf` | HTTP 服务器框架 |
-| `shelf_router` | 路由定义 |
-| `Router` | GET 路由注册 |
-| `Pipeline` | 中间件（日志） |
-| `shelf_io.serve` | 启动服务器 |
-| `Response` | 构造 HTTP 响应 |
+| `HttpServer.bind()` | 绑定端口启动服务 |
+| `await for` | 异步监听请求流 |
+| `HttpRequest` | 解析请求方法/URI/头 |
+| `HttpResponse` | 构造状态码/ContentType/响应体 |
+| 路由分发 | 手动 path 匹配 |
+| 404 处理 | 未匹配路由的默认响应 |
 
 ### 演示效果
 
@@ -294,22 +294,24 @@ echo "hello from stdin" | dart run lib/tutorials/03_dcat.dart
 ### 核心代码
 
 ```dart
-import 'package:shelf/shelf.dart';
-import 'package:shelf/shelf_io.dart' as shelf_io;
-import 'package:shelf_router/shelf_router.dart';
+import 'dart:io';
 
 void main() async {
-  final app = Router()
-    ..get('/', (req) => Response.ok('Welcome!'))
-    ..get('/hello/<name>', (req, String name) =>
-        Response.ok('Hello, $name!'));
-
-  final handler = Pipeline()
-      .addMiddleware(logRequests())
-      .addHandler(app.call);
-
-  final server = await shelf_io.serve(handler, 'localhost', 8080);
+  final server = await HttpServer.bind(InternetAddress.loopbackIPv4, 8080);
   print('服务器已启动：http://localhost:${server.port}');
+
+  await for (final request in server) {
+    final path = request.uri.path;
+    if (path == '/') {
+      request.response
+        ..write('Welcome!');
+    } else if (path.startsWith('/hello/')) {
+      final name = path.substring('/hello/'.length);
+      request.response
+        ..write('Hello, $name!');
+    }
+    request.response.close();
+  }
 }
 ```
 
@@ -328,6 +330,4 @@ dart run lib/tutorials/04_server.dart
 ```yaml
 dependencies:
   args: ^2.7.0        # dcat 命令行参数解析
-  shelf: ^1.4.0       # HTTP 服务器框架
-  shelf_router: ^1.1.0 # shelf 路由
 ```
