@@ -51,10 +51,9 @@ flutter_work_2/
 
 ### 演示效果
 
-<!-- 截图（待补充） -->
 | 代码 | 运行效果 |
 |------|----------|
-| ![代码](assets/演示截图/00-Hello-World-代码.png) | ![运行](assets/演示截图/00-Hello-World-运行效果.png) |
+| ![](assets/演示截图/00-Hello-World-代码.png) | ![](assets/演示截图/00-Hello-World-运行效果.png) |
 
 ### 核心代码
 
@@ -90,10 +89,9 @@ dart run lib/tutorials/00_helloworld.dart
 
 ### 演示效果
 
-<!-- 截图（待补充） -->
 | 代码 | 运行效果 |
 |------|----------|
-| ![代码](assets/演示截图/01-基础入门-代码.png) | ![运行](assets/演示截图/01-基础入门-运行效果.png) |
+| ![](assets/演示截图/01-基础入门-代码.png) | ![](assets/演示截图/01-基础入门-运行效果.png) |
 
 ### 核心代码
 
@@ -141,10 +139,9 @@ dart run lib/tutorials/01_dart_start.dart
 
 ### 演示效果
 
-<!-- 截图（待补充） -->
 | 代码 | 运行效果 |
 |------|----------|
-| ![代码](assets/演示截图/02-库与导入-代码.png) | ![运行](assets/演示截图/02-库与导入-运行效果.png) |
+| ![](assets/演示截图/02-库与导入-代码.png) | ![](assets/演示截图/02-库与导入-运行效果.png) |
 
 ### 核心代码
 
@@ -209,10 +206,9 @@ dart run lib/tutorials/02_dart_library.dart
 
 ### 演示效果
 
-<!-- 截图（待补充） -->
 | 代码 | 运行效果 |
 |------|----------|
-| ![代码](assets/演示截图/03-dcat-代码.png) | ![运行](assets/演示截图/03-dcat-运行效果.png) |
+| ![](assets/演示截图/03-dcat-代码.png) | ![](assets/演示截图/03-dcat-运行效果.png) |
 
 ### 核心代码
 
@@ -291,10 +287,9 @@ echo "hello from stdin" | dart run lib/tutorials/03_dcat.dart
 
 ### 演示效果
 
-<!-- 截图（待补充） -->
 | 代码 | 运行效果 |
 |------|----------|
-| ![代码](assets/演示截图/04-服务器-代码.png) | ![运行](assets/演示截图/04-服务器-运行效果.png) |
+| ![](assets/演示截图/04-服务器-代码.png) | ![](assets/演示截图/04-服务器-运行效果.png) |
 
 ### 核心代码
 
